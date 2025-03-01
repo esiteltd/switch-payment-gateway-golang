@@ -15,7 +15,7 @@ func TestPrepareCheckout(t *testing.T) {
 	}
 
 	tx := pswitch.Transaction{
-		EntityID:    "8a8294174d0595bb014d05d829cb01cd",
+		EntityID:    "for example",
 		Amount:      92.00,
 		Currency:    pswitch.IraqiDinar,
 		PaymentType: "DB",
