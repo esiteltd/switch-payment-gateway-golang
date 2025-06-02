@@ -15,7 +15,7 @@ func TestPrepareCheckout(t *testing.T) {
 	}
 
 	tx := pswitch.Transaction{
-		EntityID:    "for example",
+		EntityID:    pswitch.TestEntityID,
 		Amount:      92.00,
 		Currency:    pswitch.IraqiDinar,
 		PaymentType: "DB",
@@ -24,7 +24,14 @@ func TestPrepareCheckout(t *testing.T) {
 
 	checkout, err := p.PrepareCheckout(t.Context(), tx)
 	if err != nil {
-		t.Fatal(err)
+		t.Fatal(err, checkout)
+	}
+
+	t.Logf("checkout %+v", checkout)
+
+	checkout, err = p.GetCheckout(t.Context(), checkout.ID, tx.EntityID)
+	if err != nil {
+		t.Fatal(err, checkout)
 	}
 
 	t.Logf("checkout %+v", checkout)

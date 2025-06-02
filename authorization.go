@@ -6,6 +6,7 @@ import (
 )
 
 const TestJWT = "OGE4Mjk0MTc0ZDA1OTViYjAxNGQwNWQ4MjllNzAxZDF8OVRuSlBjMm45aA=="
+const TestEntityID = "8a8294174d0595bb014d05d829cb01cd"
 
 var DefaultJWTAuthorization = NewJWTAuthorization(TestJWT)
 
