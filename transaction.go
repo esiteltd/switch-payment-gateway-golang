@@ -1,8 +1,6 @@
 package switch_payment_gateway_golang
 
 import (
-	"crypto/md5"
-	"encoding/hex"
 	"fmt"
 	"net/url"
 )
@@ -17,16 +15,10 @@ type Transaction struct {
 
 func (t *Transaction) URLValues() (data url.Values) {
 	data = url.Values{}
-	data.Set("entityId", url.QueryEscape(hash(t.EntityID)))
+	data.Set("entityId", url.QueryEscape(t.EntityID))
 	data.Set("amount", url.QueryEscape(fmt.Sprintf("%2.f", t.Amount)))
 	data.Set("currency", url.QueryEscape(t.Currency))
 	data.Set("paymentType", url.QueryEscape(t.PaymentType))
 	data.Set("integrity", url.QueryEscape(fmt.Sprintf("%t", t.Integrity)))
 	return
-}
-
-func hash(input string) string {
-	h := md5.New()
-	h.Write([]byte(input))
-	return hex.EncodeToString(h.Sum(nil))
 }
