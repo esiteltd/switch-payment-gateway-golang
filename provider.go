@@ -99,9 +99,9 @@ func (p *Provider) GetCheckout(ctx context.Context, id, entityID string) (c Chec
 		return c, fmt.Errorf("unmarshal response: %w", err)
 	}
 
-	if res.StatusCode != http.StatusOK {
-		return c, fmt.Errorf("status code %d", res.StatusCode)
-	}
+	//if res.StatusCode != http.StatusOK {
+	//	return c, fmt.Errorf("status code %d", res.StatusCode)
+	//}
 
 	return c, nil
 }
